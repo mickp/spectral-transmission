@@ -239,7 +239,7 @@ FilterSet.prototype.efficiency = function( ){
 	}
     }
     // When all the data is ready, do the calculation.
-    $.when.apply(null, defer).then( this.doEfficiencyCalc() );
+    $.when.apply(null, defer).then( () => this.doEfficiencyCalc() );
 }
 
 
