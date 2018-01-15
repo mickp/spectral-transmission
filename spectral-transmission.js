@@ -46,14 +46,12 @@ var EXSUFFIX = '_ex'
  */
 
 // Dash styles generator.
-DASHES = function* () {
+var DASHINDEX = 0;
+function getDashStyle () {
     var styles = [[8,4], [16,4], [4,8,4], [4,8,8]];
-    var index = -1;
-    while(true){
-        index = (index+1) % styles.length;
-        yield styles[index];
-    }
-}()
+    DASHINDEX = (DASHINDEX+1) % styles.length;
+    return styles[DASHINDEX];
+}
 
 
 // ==== Spectrum base === //
@@ -435,7 +433,7 @@ function drawPlot(dye, excitation, filters, filterModes) {
             default:
                 bg = `hsla(${hue}, 100%, 50%, 0.1)`
                 fg = `hsla(${hue}, 100%, 50%, 0.5)`
-                borderDash = DASHES.next().value;
+                borderDash = getDashStyle();
                 var addToChart = x => CHART.data.datasets.push(x);
         }
 
