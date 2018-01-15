@@ -21,13 +21,13 @@
 var FN_EXCLUDE = ['.csv', '.Csv', 'CSV', 'index.html'];
 // regex strings
 // match a floating point number
-FLOATMATCH = /([-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)/
+FLOATMATCH = /([\-\+]?[0-9]*\.?[0-9]+(?:[eE][\-\+]?[0-9]+)?)/;
 // match a quantum yield entry
-QYIELDMATCH = /[Qq]uantum [Yy]ield:\s*([-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)/
+QYIELDMATCH = /[Qq]uantum [Yy]ield:\s*([-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)/;
 // match an exctinction coefficient entry
-EXTCOEFFMATCH = /[Ee]xtinction [Cc]oefficient:\s*([-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)/
+EXTCOEFFMATCH = /[Ee]xtinction [Cc]oefficient:\s*([-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)/;
 // Alexa-488 birghtness for relative brightness calculations
-var ALEXABRIGHT= 0.92*73000    
+var ALEXABRIGHT= 0.92*73000;
 // The set of active filters.
 var CHART = null;
 var SPECTRA = {};
@@ -36,7 +36,7 @@ var WLMIN = 300.0;
 var WLMAX = 800.0;
 var WLSTEP = 1.0;
 // Suffix for excitation spectra
-var EXSUFFIX = '_ex'
+var EXSUFFIX = '_ex';
 
 /* Required page elements:
  * #sets    - a list of predefined filter sets
@@ -378,7 +378,7 @@ function drawPlot(dye, excitation, filters, filterModes) {
     // mulitple by 10 to give resasonable range of values.
     if (dye && e_eff && SPECTRA[dye].qyield && SPECTRA[dye].extcoeff && t_eff) {
         bright = ((e_eff*SPECTRA[dye].qyield * SPECTRA[dye].extcoeff * t_eff)/
-          ALEXABRIGHT) * 10.0 
+          ALEXABRIGHT) * 10.0;
     }
 
     var skeys = []; // all active keys (filters + dye)
